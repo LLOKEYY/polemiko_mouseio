@@ -2,7 +2,11 @@ const translations = {
   el: {
     siteHeaderLabel: "Πληροφορίες σελίδας",
     navigationLabel: "Πλοήγηση",
-    historyLink: "Ιστορία",
+    brandName: "Πολεμικό Μουσείο Θεσσαλονίκης",
+    roomLabel: "Αίθουσα",
+    roomSelectLabel: "Επιλογή αίθουσας",
+    historyRoom: "Ιστορία",
+    entranceRoom: "Είσοδος",
     documentTitle: "Είσοδος | Πολεμικό Μουσείο Θεσσαλονίκης",
     languageSwitchLabel: "Επιλογή γλώσσας",
     greekLanguage: "Ελληνικά",
@@ -30,7 +34,11 @@ const translations = {
   en: {
     siteHeaderLabel: "Page information",
     navigationLabel: "Navigation",
-    historyLink: "History",
+    brandName: "War Museum of Thessaloniki",
+    roomLabel: "Room",
+    roomSelectLabel: "Choose museum room",
+    historyRoom: "History",
+    entranceRoom: "Entrance",
     documentTitle: "Entrance | War Museum of Thessaloniki",
     languageSwitchLabel: "Language selection",
     greekLanguage: "Greek",
@@ -323,6 +331,7 @@ const exhibits = {
 
 const points = document.querySelectorAll(".map-point");
 const languageButtons = document.querySelectorAll(".language-button");
+const roomSelect = document.querySelector(".room-select");
 const kicker = document.querySelector("#panel-kicker");
 const title = document.querySelector("#panel-title");
 const body = document.querySelector("#panel-body");
@@ -398,6 +407,10 @@ points.forEach((point) => {
 
 languageButtons.forEach((button) => {
   button.addEventListener("click", () => setLanguage(button.dataset.language));
+});
+
+roomSelect?.addEventListener("change", () => {
+  window.location.href = roomSelect.value;
 });
 
 setLanguage(currentLanguage);

@@ -12,7 +12,7 @@
   </head>
   <body>
     <main class="page-shell">
-      <header class="site-header" aria-label="Πληροφορίες σελίδας">
+      <header class="site-header" aria-label="Πληροφορίες σελίδας" data-i18n-attr="aria-label:siteHeaderLabel">
         <a class="brand" href="./" aria-label="Πολεμικό Μουσείο Θεσσαλονίκης">
           <span class="brand-mark" aria-hidden="true">
             <svg viewBox="0 0 48 48" role="img">
@@ -20,29 +20,44 @@
               <path d="M15 18v18M22 18v18M29 18v18M36 18v18" />
             </svg>
           </span>
-          <span>Πολεμικό Μουσείο Θεσσαλονίκης</span>
+          <span data-i18n="brandName">Πολεμικό Μουσείο Θεσσαλονίκης</span>
         </a>
-        <nav class="site-nav" aria-label="Πλοήγηση">
-          <a href="entrance.html">Είσοδος</a>
+        <nav class="site-nav" aria-label="Πλοήγηση" data-i18n-attr="aria-label:navigationLabel">
+          <label class="room-switch">
+            <span data-i18n="roomLabel">Αίθουσα</span>
+            <select class="room-select" aria-label="Επιλογή αίθουσας" data-i18n-attr="aria-label:roomSelectLabel">
+              <option value="index.html" selected data-i18n="historyRoom">Ιστορία</option>
+              <option value="entrance.html" data-i18n="entranceRoom">Είσοδος</option>
+            </select>
+          </label>
+          <div class="language-switch" role="group" aria-label="Επιλογή γλώσσας" data-i18n-attr="aria-label:languageSwitchLabel">
+            <button class="language-button is-active" type="button" data-language="el" aria-pressed="true" aria-label="Ελληνικά" data-i18n-attr="aria-label:greekLanguage">
+              <span aria-hidden="true">🇬🇷</span>
+            </button>
+            <button class="language-button" type="button" data-language="en" aria-pressed="false" aria-label="English" data-i18n-attr="aria-label:englishLanguage">
+              <span aria-hidden="true">🇺🇸</span>
+            </button>
+          </div>
         </nav>
       </header>
 
       <section class="intro" aria-labelledby="page-title">
         <div class="intro-copy">
-          <p class="location">Γρηγορίου Λαμπράκη 4, Πεδίο του Άρεως</p>
-          <h1 id="page-title">Ιστορία του Μουσείου</h1>
+          <p class="location" data-i18n="location">Γρηγορίου Λαμπράκη 4, Πεδίο του Άρεως</p>
+          <h1 id="page-title" data-i18n="pageTitle">Ιστορία του Μουσείου</h1>
         </div>
 
         <figure class="hero-image">
           <img
             src="assets/thessaloniki-branch.jpg"
             alt="Αρχιτεκτονική άποψη νεοκλασικού κτιρίου μουσείου"
+            data-i18n-attr="alt:heroImageAlt"
           />
         </figure>
       </section>
 
-      <article class="content" aria-label="Ιστορικές πληροφορίες">
-        <p>
+      <article class="content" aria-label="Ιστορικές πληροφορίες" data-i18n-attr="aria-label:contentLabel">
+        <p data-i18n="historyParagraph1">
           Το κτίριο στο οποίο στεγάζεται σήμερα το Πολεμικό Μουσείο της
           Θεσσαλονίκης σχεδιάστηκε από τον Ιταλό αρχιτέκτονα Βιταλιάνο
           Ποζέλι, χτίστηκε το 1900 για να καλύψει τις ανάγκες του Οθωμανικού
@@ -51,13 +66,13 @@
           της Παραλίας έως και την ΣΣΑΣ.
         </p>
 
-        <p>
+        <p data-i18n="historyParagraph2">
           Το 1912, όταν απελευθερώθηκε η Θεσσαλονίκη, το κτίριο περιήλθε στην
           κυριότητα του Ελληνικού στρατού, ο οποίος εγκατέστησε σε αυτό δικές
           του στρατιωτικές μονάδες και υπηρεσίες.
         </p>
 
-        <p>
+        <p data-i18n="historyParagraph3">
           Αργότερα, η πολιτική και στρατιωτική ηγεσία αποφάσισε να στεγάσει
           στο εν λόγω κτίριο το Πολεμικό Μουσείο της Θεσσαλονίκης, το οποίο
           αποτελεί παράρτημα του Πολεμικού Μουσείου Αθηνών. Οι εργασίες
@@ -67,5 +82,6 @@
         </p>
       </article>
     </main>
+    <script src="index.js"></script>
   </body>
 </html>

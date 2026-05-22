@@ -50,6 +50,7 @@ svg {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
   min-height: 4rem;
   border-bottom: 1px solid rgb(105 23 23 / 13%);
 }
@@ -83,6 +84,39 @@ svg {
 
 .site-nav a:hover {
   color: var(--accent);
+}
+
+.room-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.room-switch span {
+  color: var(--muted);
+}
+
+.room-select {
+  min-width: 8.5rem;
+  height: 2.42rem;
+  padding: 0 2.1rem 0 0.85rem;
+  color: var(--accent-dark);
+  background:
+    linear-gradient(45deg, transparent 50%, currentColor 50%) right 0.95rem top 1.05rem / 0.35rem 0.35rem no-repeat,
+    linear-gradient(135deg, currentColor 50%, transparent 50%) right 0.72rem top 1.05rem / 0.35rem 0.35rem no-repeat,
+    rgb(255 253 248 / 70%);
+  border: 1px solid rgb(105 23 23 / 15%);
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  appearance: none;
+}
+
+.room-select:focus-visible {
+  outline: 3px solid rgb(154 31 31 / 35%);
+  outline-offset: 2px;
 }
 
 .language-switch {
@@ -498,6 +532,7 @@ h1 {
 @media (max-width: 420px) {
   .site-header {
     align-items: flex-start;
+    flex-direction: column;
     gap: 0.8rem;
   }
 
@@ -516,9 +551,19 @@ h1 {
 
   .site-nav {
     flex-wrap: wrap;
-    justify-content: flex-end;
-    padding-top: 0.65rem;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 0;
     font-size: 0.72rem;
+  }
+
+  .room-switch {
+    flex: 1 1 12rem;
+  }
+
+  .room-select {
+    flex: 1;
+    min-width: 0;
   }
 
   .map-point {

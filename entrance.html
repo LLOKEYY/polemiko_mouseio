@@ -20,10 +20,16 @@
               <path d="M15 18v18M22 18v18M29 18v18M36 18v18" />
             </svg>
           </span>
-          <span>Πολεμικό Μουσείο Θεσσαλονίκης</span>
+          <span data-i18n="brandName">Πολεμικό Μουσείο Θεσσαλονίκης</span>
         </a>
         <nav class="site-nav" aria-label="Πλοήγηση" data-i18n-attr="aria-label:navigationLabel">
-          <a href="index.html" data-i18n="historyLink">Ιστορία</a>
+          <label class="room-switch">
+            <span data-i18n="roomLabel">Αίθουσα</span>
+            <select class="room-select" aria-label="Επιλογή αίθουσας" data-i18n-attr="aria-label:roomSelectLabel">
+              <option value="index.html" data-i18n="historyRoom">Ιστορία</option>
+              <option value="entrance.html" selected data-i18n="entranceRoom">Είσοδος</option>
+            </select>
+          </label>
           <div class="language-switch" role="group" aria-label="Επιλογή γλώσσας" data-i18n-attr="aria-label:languageSwitchLabel">
             <button class="language-button is-active" type="button" data-language="el" aria-pressed="true" aria-label="Ελληνικά" data-i18n-attr="aria-label:greekLanguage">
               <span aria-hidden="true">🇬🇷</span>
