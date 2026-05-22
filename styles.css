@@ -110,7 +110,10 @@ svg {
   border: 1px solid rgb(105 23 23 / 15%);
   border-radius: 999px;
   cursor: pointer;
-  font: inherit;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: inherit;
+  line-height: 1;
   letter-spacing: inherit;
   text-transform: inherit;
   appearance: none;
