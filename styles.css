@@ -20,6 +20,9 @@ html {
   min-height: 100%;
   background: var(--bg);
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  touch-action: manipulation;
 }
 
 body {
@@ -40,6 +43,12 @@ body {
 img,
 svg {
   display: block;
+}
+
+a,
+button,
+select {
+  touch-action: manipulation;
 }
 
 .page-shell {
@@ -534,7 +543,11 @@ h1 {
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 560px) {
+  .page-shell {
+    padding: 0.9rem 1rem 3.5rem;
+  }
+
   .site-header {
     align-items: flex-start;
     flex-direction: column;
@@ -548,6 +561,27 @@ h1 {
   .brand-mark {
     width: 2rem;
     height: 2rem;
+  }
+
+  .intro,
+  .entrance-hero {
+    padding-top: 1.9rem;
+  }
+
+  h1,
+  .entrance-hero h1 {
+    max-width: 10ch;
+    font-size: clamp(2.65rem, 12vw, 3.3rem);
+    line-height: 0.96;
+  }
+
+  .location {
+    margin-bottom: 0.75rem;
+    font-size: 0.72rem;
+  }
+
+  .entrance-hero > p {
+    font-size: 1rem;
   }
 
   .content p {
