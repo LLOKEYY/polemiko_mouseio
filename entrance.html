@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="el">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Διαδραστικός οδηγός για τα εκθέματα στην είσοδο του Πολεμικού Μουσείου Θεσσαλονίκης."
+    />
+    <title>Είσοδος | Πολεμικό Μουσείο Θεσσαλονίκης</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell entrance-page">
+      <header class="site-header" aria-label="Πληροφορίες σελίδας" data-i18n-attr="aria-label:siteHeaderLabel">
+        <a class="brand" href="./" aria-label="Πολεμικό Μουσείο Θεσσαλονίκης">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48" role="img">
+              <path d="M6 40h36M10 36h28M12 18h24M9 15 24 8l15 7" />
+              <path d="M15 18v18M22 18v18M29 18v18M36 18v18" />
+            </svg>
+          </span>
+          <span>Πολεμικό Μουσείο Θεσσαλονίκης</span>
+        </a>
+        <nav class="site-nav" aria-label="Πλοήγηση" data-i18n-attr="aria-label:navigationLabel">
+          <a href="index.html" data-i18n="historyLink">Ιστορία</a>
+          <div class="language-switch" role="group" aria-label="Επιλογή γλώσσας" data-i18n-attr="aria-label:languageSwitchLabel">
+            <button class="language-button is-active" type="button" data-language="el" aria-pressed="true" aria-label="Ελληνικά" data-i18n-attr="aria-label:greekLanguage">
+              <span aria-hidden="true">🇬🇷</span>
+            </button>
+            <button class="language-button" type="button" data-language="en" aria-pressed="false" aria-label="English" data-i18n-attr="aria-label:englishLanguage">
+              <span aria-hidden="true">🇺🇸</span>
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      <section class="entrance-hero" aria-labelledby="page-title">
+        <div>
+          <p class="location" data-i18n="heroKicker">Διαδρομή εισόδου</p>
+          <h1 id="page-title" data-i18n="heroTitle">Η είσοδος του μουσείου</h1>
+        </div>
+        <p data-i18n="heroCopy">
+          Πάτησε ένα σημείο στο σχέδιο για να δεις τι εκτίθεται σε εκείνη τη
+          θέση.
+        </p>
+      </section>
+
+      <section class="map-layout" aria-label="Διαδραστικό σχέδιο εισόδου" data-i18n-attr="aria-label:mapSectionLabel">
+        <div class="map-card">
+          <div class="entrance-map" aria-label="Κάτοψη εισόδου μουσείου" data-i18n-attr="aria-label:mapLabel">
+            <svg viewBox="0 0 700 920" role="img" aria-labelledby="map-title">
+              <title id="map-title" data-i18n="mapTitle">
+                Σχέδιο εισόδου με εκθέματα αριστερά, δεξιά και προς τις
+                σκάλες
+              </title>
+              <rect class="map-room" x="74" y="58" width="552" height="792" />
+              <path class="map-path" d="M350 820 V110" />
+              <rect class="map-stairs" x="228" y="58" width="244" height="78" />
+              <path class="map-stair-line" d="M246 80 H454 M246 101 H454 M246 122 H454" />
+              <rect class="map-case" x="114" y="624" width="176" height="98" />
+              <rect class="map-case" x="410" y="624" width="176" height="98" />
+              <rect class="map-case tall" x="438" y="310" width="110" height="230" />
+              <rect class="map-case" x="120" y="158" width="178" height="92" />
+              <rect class="map-case" x="402" y="158" width="178" height="92" />
+              <path class="map-entry" d="M262 850 H438" />
+              <text x="350" y="42" text-anchor="middle" data-i18n="stairsLabel">ΣΚΑΛΕΣ</text>
+              <text x="350" y="890" text-anchor="middle" data-i18n="entranceLabel">ΕΙΣΟΔΟΣ</text>
+            </svg>
+
+            <button class="map-point is-active" data-exhibit="heidelberg" aria-label="Heidelberg" style="--x: 29%; --y: 72.5%;" data-i18n-attr="aria-label:heidelbergPoint">
+              <span>1</span>
+            </button>
+            <button class="map-point" data-exhibit="chandler" aria-label="Chandler and Price" style="--x: 71%; --y: 72.5%;" data-i18n-attr="aria-label:chandlerPoint">
+              <span>2</span>
+            </button>
+            <button class="map-point" data-exhibit="weapons" aria-label="Προθήκη όπλων" style="--x: 70.5%; --y: 46%;" data-i18n-attr="aria-label:weaponsPoint">
+              <span>3</span>
+            </button>
+            <button class="map-point" data-exhibit="infantry-uniform" aria-label="Στολή Πεζικού" style="--x: 30%; --y: 22%;" data-i18n-attr="aria-label:infantryPoint">
+              <span>4</span>
+            </button>
+            <button class="map-point" data-exhibit="cavalry-uniform" aria-label="Στολή Ιππικού-Τεθωρακισμένων" style="--x: 70%; --y: 22%;" data-i18n-attr="aria-label:cavalryPoint">
+              <span>5</span>
+            </button>
+          </div>
+          <ol class="map-legend" aria-label="Υπόμνημα σχεδίου" data-i18n-attr="aria-label:legendLabel">
+            <li><span>1</span>Heidelberg</li>
+            <li><span>2</span>Chandler &amp; Price</li>
+            <li><span>3</span><span data-i18n="weaponsLegend">Προθήκη όπλων</span></li>
+            <li><span>4</span><span data-i18n="infantryLegend">Στολή Πεζικού</span></li>
+            <li><span>5</span><span data-i18n="cavalryLegend">Στολή Ιππικού-Τεθωρακισμένων</span></li>
+          </ol>
+        </div>
+
+        <aside class="exhibit-panel" aria-live="polite">
+          <p class="panel-kicker" id="panel-kicker">Σημείο 1</p>
+          <h2 id="panel-title">Heidelberg “Original Heidelberg”</h2>
+          <div id="panel-body">
+            <p>
+              Δεξιά και αριστερά της εισόδου συναντάμε δύο παλιές
+              τυπογραφικές μηχανές. Στα δεξιά εκτίθεται μια χειροκίνητη
+              πιεστική τυπογραφική πρέσα Chandler&amp;Price η οποία
+              χρησιμοποιούνταν για εκτύπωση καρτών, αφισών, εφημερίδων και
+              βιβλίων.
+            </p>
+            <p>
+              Στα αριστερά βρίσκεται μια πιο σύνθετη τυπογραφική μηχανή
+              Heidelberg (“Original Heidelberg”), γνωστή και ως “Windmill
+              Press”.
+            </p>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <script src="entrance.js"></script>
+  </body>
+</html>
