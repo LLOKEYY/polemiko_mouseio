@@ -2,12 +2,12 @@ const translations = {
   el: {
     siteHeaderLabel: "Πληροφορίες σελίδας",
     navigationLabel: "Πλοήγηση",
-    brandName: "Πολεμικό Μουσείο Θεσσαλονίκης",
+    brandName: "Πολεμικό Μουσείο Παράρτημα Θεσσαλονίκης",
     roomLabel: "Αίθουσα",
     roomSelectLabel: "Επιλογή αίθουσας",
     historyRoom: "Ιστορία",
     entranceRoom: "Είσοδος",
-    documentTitle: "Είσοδος | Πολεμικό Μουσείο Θεσσαλονίκης",
+    documentTitle: "Είσοδος | Πολεμικό Μουσείο Παράρτημα Θεσσαλονίκης",
     languageSwitchLabel: "Επιλογή γλώσσας",
     greekLanguage: "Ελληνικά",
     englishLanguage: "English",
@@ -34,12 +34,12 @@ const translations = {
   en: {
     siteHeaderLabel: "Page information",
     navigationLabel: "Navigation",
-    brandName: "War Museum of Thessaloniki",
+    brandName: "War Museum, Thessaloniki Branch",
     roomLabel: "Room",
     roomSelectLabel: "Choose museum room",
     historyRoom: "History",
     entranceRoom: "Entrance",
-    documentTitle: "Entrance | War Museum of Thessaloniki",
+    documentTitle: "Entrance | War Museum, Thessaloniki Branch",
     languageSwitchLabel: "Language selection",
     greekLanguage: "Greek",
     englishLanguage: "English",
@@ -332,9 +332,13 @@ const exhibits = {
 const points = document.querySelectorAll(".map-point");
 const languageButtons = document.querySelectorAll(".language-button");
 const roomSelect = document.querySelector(".room-select");
+const panel = document.querySelector(".exhibit-panel");
 const kicker = document.querySelector("#panel-kicker");
 const title = document.querySelector("#panel-title");
 const body = document.querySelector("#panel-body");
+const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+let panelTransitionTimer;
+let hasRenderedExhibit = false;
 function getStoredLanguage() {
   try {
     return localStorage.getItem("polemiko-language");
@@ -378,7 +382,16 @@ function applyTranslations(language) {
   });
 }
 
-function selectExhibit(id) {
+function scrollPanelIntoView() {
+  if (!panel) return;
+
+  panel.scrollIntoView({
+    behavior: reducedMotionQuery.matches ? "auto" : "smooth",
+    block: "start",
+  });
+}
+
+function renderExhibit(id, shouldScroll = false) {
   const exhibit = exhibits[id]?.[currentLanguage];
   if (!exhibit) return;
 
@@ -390,6 +403,30 @@ function selectExhibit(id) {
   points.forEach((point) => {
     point.classList.toggle("is-active", point.dataset.exhibit === id);
   });
+
+  hasRenderedExhibit = true;
+
+  if (shouldScroll) {
+    scrollPanelIntoView();
+  }
+}
+
+function selectExhibit(id, shouldScroll = false) {
+  const exhibit = exhibits[id]?.[currentLanguage];
+  if (!exhibit) return;
+
+  clearTimeout(panelTransitionTimer);
+
+  if (!panel || reducedMotionQuery.matches || !hasRenderedExhibit) {
+    renderExhibit(id, shouldScroll);
+    return;
+  }
+
+  panel.classList.add("is-changing");
+  panelTransitionTimer = window.setTimeout(() => {
+    renderExhibit(id, shouldScroll);
+    requestAnimationFrame(() => panel.classList.remove("is-changing"));
+  }, 140);
 }
 
 function setLanguage(language) {
@@ -402,7 +439,7 @@ function setLanguage(language) {
 }
 
 points.forEach((point) => {
-  point.addEventListener("click", () => selectExhibit(point.dataset.exhibit));
+  point.addEventListener("click", () => selectExhibit(point.dataset.exhibit, true));
 });
 
 languageButtons.forEach((button) => {

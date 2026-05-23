@@ -40,6 +40,61 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.65rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes image-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(0.9rem) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes map-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes map-detail-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.35rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes point-pulse {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+
+  42% {
+    opacity: 0.34;
+    transform: scale(1.55);
+  }
+}
+
 img,
 svg {
   display: block;
@@ -55,6 +110,7 @@ select {
   width: min(100%, 74rem);
   margin: 0 auto;
   padding: 1.1rem clamp(1.1rem, 4vw, 3rem) 4.5rem;
+  animation: page-enter 460ms ease-out both;
 }
 
 .site-header {
@@ -126,6 +182,16 @@ select {
   letter-spacing: inherit;
   text-transform: inherit;
   appearance: none;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.room-select:hover {
+  border-color: rgb(105 23 23 / 32%);
+  box-shadow: 0 8px 20px rgb(29 25 18 / 10%);
+  transform: translateY(-1px);
 }
 
 .room-select:focus-visible {
@@ -141,6 +207,14 @@ select {
   background: rgb(255 253 248 / 70%);
   border: 1px solid rgb(105 23 23 / 15%);
   border-radius: 999px;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.language-switch:hover {
+  border-color: rgb(105 23 23 / 28%);
+  box-shadow: 0 8px 18px rgb(29 25 18 / 9%);
 }
 
 .language-button {
@@ -155,12 +229,24 @@ select {
   cursor: pointer;
   font-size: 1.05rem;
   line-height: 1;
+  transition:
+    background 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
 }
 
 .language-button:hover,
 .language-button.is-active {
   background: var(--paper);
   box-shadow: 0 5px 14px rgb(29 25 18 / 13%);
+}
+
+.language-button:hover {
+  transform: translateY(-1px);
+}
+
+.language-button:active {
+  transform: translateY(0) scale(0.97);
 }
 
 .language-button:focus-visible {
@@ -242,6 +328,7 @@ h1 {
   border: 1px solid rgb(79 64 38 / 18%);
   border-radius: 0.45rem;
   box-shadow: var(--shadow);
+  animation: image-reveal 620ms 120ms ease-out both;
 }
 
 .hero-image::before {
@@ -337,6 +424,20 @@ h1 {
   height: auto;
 }
 
+.entrance-map .map-room,
+.entrance-map .map-case,
+.entrance-map .map-stairs {
+  animation: map-detail-enter 520ms ease-out both;
+}
+
+.entrance-map .map-case {
+  animation-delay: 180ms;
+}
+
+.entrance-map .map-stairs {
+  animation-delay: 260ms;
+}
+
 .entrance-map text {
   fill: #4b4538;
   font-family: Arial, Helvetica, sans-serif;
@@ -356,8 +457,10 @@ h1 {
   fill: none;
   stroke: rgb(154 122 56 / 55%);
   stroke-dasharray: 12 13;
+  stroke-dashoffset: 170;
   stroke-linecap: round;
   stroke-width: 13;
+  animation: map-draw 850ms 260ms ease-out both;
 }
 
 .map-case {
@@ -380,14 +483,18 @@ h1 {
 .map-entry {
   fill: none;
   stroke: #6f5e45;
+  stroke-dasharray: 700;
+  stroke-dashoffset: 700;
   stroke-linecap: round;
   stroke-width: 5;
+  animation: map-draw 700ms 440ms ease-out both;
 }
 
 .map-point {
   position: absolute;
   left: var(--x);
   top: var(--y);
+  z-index: 1;
   display: grid;
   width: 2.55rem;
   height: 2.55rem;
@@ -401,12 +508,37 @@ h1 {
   box-shadow: 0 10px 20px rgb(31 22 16 / 20%);
   cursor: pointer;
   font: 700 0.95rem/1 Arial, Helvetica, sans-serif;
+  isolation: isolate;
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.map-point::after {
+  position: absolute;
+  inset: -0.35rem;
+  z-index: -1;
+  background: rgb(154 31 31 / 34%);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+  animation: point-pulse 2.6s ease-out infinite;
 }
 
 .map-point:hover,
 .map-point.is-active {
   background: var(--gold);
   color: #171714;
+}
+
+.map-point:hover {
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.map-point:active {
+  transform: translate(-50%, -50%) scale(0.96);
 }
 
 .map-point:focus-visible {
@@ -451,6 +583,19 @@ h1 {
   max-height: min(78vh, 48rem);
   overflow: auto;
   padding: clamp(1.25rem, 3vw, 2rem);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.exhibit-panel.is-changing {
+  opacity: 0;
+  transform: translateY(0.35rem);
+}
+
+.exhibit-panel:hover {
+  box-shadow: 0 22px 54px rgb(29 25 18 / 13%);
 }
 
 .panel-kicker {
@@ -615,5 +760,16 @@ h1 {
   .map-point {
     width: 2.25rem;
     height: 2.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
   }
 }
